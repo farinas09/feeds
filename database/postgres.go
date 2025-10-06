@@ -40,7 +40,7 @@ func (r *PostgresRepository) ListFeeds(ctx context.Context) ([]*models.Feed, err
 
 	for rows.Next() {
 		var feed models.Feed
-		err := rows.Scan(&feed.Id, &feed.Title, &feed.Description)
+		err := rows.Scan(&feed.Id, &feed.Title, &feed.Description, &feed.CreatedAt)
 		if err != nil {
 			return nil, err
 		}

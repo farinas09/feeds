@@ -39,7 +39,7 @@ func ListFeedsHandler(w http.ResponseWriter, r *http.Request) {
 
 func SearchFeedsHandler(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
-	query := r.URL.Query().Get("search")
+	query := r.URL.Query().Get("query")
 	if len(query) == 0 {
 		http.Error(w, "search query is required", http.StatusBadRequest)
 		return

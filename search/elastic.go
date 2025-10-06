@@ -48,10 +48,9 @@ func (r *ElasticSearchRepository) SearchFeeds(ctx context.Context, query string)
 	searchQuery := map[string]interface{}{
 		"query": map[string]interface{}{
 			"multi_match": map[string]interface{}{
-				"fields":           []string{"title", "description"},
-				"query":            query,
-				"fuzziness":        3,
-				"cutoff_frequency": 0.0001,
+				"fields":    []string{"title", "description"},
+				"query":     query,
+				"fuzziness": 2,
 			},
 		},
 	}

@@ -12,13 +12,11 @@ services:
     restart: always
 
   nats:
-    image: nats:latest
+    image: nats:2.11.1
     restart: always
   elasticsearch:
-    image: elasticsearch:latest
+    image: elasticsearch:8.19.4
     restart: always
-    ports:
-      - 9200:9200
     environment:
       - discovery.type=single-node
       - ES_JAVA_OPTS=-Xms512m -Xmx512m
@@ -31,7 +29,7 @@ services:
       - postgres
       - elasticsearch
     ports:
-      - 8080:8080
+      - "8080"
     environment:
       - NATS_ADDRESS=nats:4222
       - POSTGRES_DB=feeds
@@ -45,7 +43,7 @@ services:
       - postgres
       - elasticsearch
     ports:
-      - 8080:8080
+      - "8080"
     environment:
       - NATS_ADDRESS=nats:4222
       - POSTGRES_DB=feeds
@@ -58,7 +56,7 @@ services:
     depends_on:
       - nats
     ports:
-      - 8080:8080
+      - "8080"
     environment:
       - NATS_ADDRESS=nats:4222
   nginx:
