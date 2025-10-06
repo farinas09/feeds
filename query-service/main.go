@@ -65,6 +65,6 @@ func main() {
 func newRouter() (router *mux.Router) {
 	router = mux.NewRouter()
 	router.HandleFunc("/feeds", ListFeedsHandler).Methods(http.MethodGet)
-	router.HandleFunc("/feeds/search", SearchFeedsHandler).Methods(http.MethodGet)
+	router.HandleFunc("/search", SearchFeedsHandler).Methods(http.MethodGet)
 	return
 }
