@@ -10,3 +10,8 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: feeds
     restart: always
+
+  nats:
+    image: nats:latest
+    restart: always
+  
