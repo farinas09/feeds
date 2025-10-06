@@ -8,8 +8,8 @@ import (
 
 type SearchRepository interface {
 	Close()
-	IndexFeed(ctx context.Context, feed *models.Feed) error
-	SearchFeeds(ctx context.Context, query string) ([]*models.Feed, error)
+	IndexFeed(ctx context.Context, feed models.Feed) error
+	SearchFeeds(ctx context.Context, query string) ([]models.Feed, error)
 }
 
 var searchRepository SearchRepository
@@ -22,10 +22,10 @@ func Close() {
 	searchRepository.Close()
 }
 
-func IndexFeed(ctx context.Context, feed *models.Feed) error {
+func IndexFeed(ctx context.Context, feed models.Feed) error {
 	return searchRepository.IndexFeed(ctx, feed)
 }
 
-func SearchFeeds(ctx context.Context, query string) ([]*models.Feed, error) {
+func SearchFeeds(ctx context.Context, query string) ([]models.Feed, error) {
 	return searchRepository.SearchFeeds(ctx, query)
 }

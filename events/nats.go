@@ -63,7 +63,7 @@ func (n *NatsEventStore) PublishCreatedFeed(ctx context.Context, feed *models.Fe
 	return n.conn.Publish(msg.Type(), data)
 }
 
-func (n *NatsEventStore) OnCreatedFeed(ctx context.Context, f func(CreatedFeedMessage)) (err error) {
+func (n *NatsEventStore) OnCreatedFeed(f func(CreatedFeedMessage)) (err error) {
 	msg := CreatedFeedMessage{}
 	n.feedCreatedSub, err = n.conn.Subscribe(msg.Type(), func(m *nats.Msg) {
 		n.decodeMessage(m.Data, &msg)
